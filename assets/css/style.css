@@ -1,0 +1,230 @@
+:root {
+  --bg: #0f172a;
+  --card: #111c33;
+  --text: #e5e7eb;
+  --muted: #aab3c5;
+  --line: rgba(255,255,255,0.12);
+  --btn: #1f2a44;
+  --btn2: #24314f;
+  --good: #22c55e;
+  --warn: #fbbf24;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #295262
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+h1 { margin: 0; font-size: 20px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+  padding: 12px;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.muted { color: var(--muted); }
+
+/* Layout positions */
+#clickArea { grid-column: span 4; min-height: 280px; position: relative; }
+#scoreboard { grid-column: span 8; }
+#upgradesArea { grid-column: span 7; }
+#rewardsArea { grid-column: span 5; }
+#helpPanel { grid-column: span 12; }
+
+@media (max-width: 900px) {
+  #clickArea, #scoreboard, #upgradesArea, #rewardsArea { grid-column: span 12; }
+}
+
+/* Buttons */
+.btn {
+  background: var(--btn);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--btn2); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn.secondary { padding: 8px 10px; }
+
+/* Tree button */
+.tree {
+  width: 160px;
+  height: 160px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+  margin: 18px auto 6px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(34,197,94,0.18), rgba(34,197,94,0.04));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 120ms ease;
+}
+
+.tree:active { transform: scale(0.96); }
+
+/* Toast message */
+.toast {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  min-height: 22px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.toast.show { opacity: 1; }
+
+/* Scoreboard */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.02);
+}
+
+.label { font-size: 12px; color: var(--muted); }
+.value { font-size: 18px; font-weight: 800; margin-top: 4px; }
+
+.progressWrap { margin-top: 12px; }
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+.progressBar {
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(34,197,94,0.8), rgba(251,191,36,0.8));
+  border-radius: 999px;
+  transition: width 180ms ease;
+}
+
+/* Upgrades list */
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.upgradeRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.02);
+}
+
+.upgradeTitle {
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.upgradeMeta {
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Rewards */
+.rewards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.badge {
+  border: 1px dashed rgba(255,255,255,0.25);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.015);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  opacity: 0.45;
+}
+
+.badge.earned {
+  opacity: 1;
+  border-style: solid;
+  background: rgba(34,197,94,0.08);
+}
+
+.badgeIcon { font-size: 22px; }
+.badgeText { font-size: 13px; }
+.badgeText strong { display: block; font-size: 14px; }
+
+.help {
+  line-height: 1.45;
+}
+
+.footer {
+  padding: 10px 12px 16px;
+  text-align: center;
+}

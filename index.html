@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tree Clicker</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script defer src="assets/js/game.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>🌳 Tree Clicker</h1>
+    <button id="helpBtn" class="btn secondary" type="button">Help</button>
+  </header>
+
+  <main class="grid">
+    <!-- CLICK AREA -->
+    <section class="card" id="clickArea">
+      <h2>Click Area</h2>
+      <p class="muted">Click the tree to collect leaves.</p>
+
+      <button id="treeBtn" class="tree" type="button" aria-label="Click the tree">
+        🌳
+      </button>
+
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </section>
+
+    <!-- SCOREBOARD -->
+    <section class="card" id="scoreboard">
+      <h2>Scoreboard</h2>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="label">Leaves</div>
+          <div class="value" id="leavesValue">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Leaves / Click</div>
+          <div class="value" id="clickValue">1</div>
+        </div>
+        <div class="stat">
+          <div class="label">Upgrades Owned</div>
+          <div class="value" id="upgradesOwned">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Auto Speed</div>
+          <div class="value" id="autoSpeed">Off</div>
+        </div>
+      </div>
+
+      <div class="progressWrap">
+        <div class="progressHeader">
+          <span>Next reward progress</span>
+          <span id="nextRewardLabel" class="muted"></span>
+        </div>
+        <div class="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <div id="progressFill" class="progressFill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPGRADES -->
+    <section class="card" id="upgradesArea">
+      <h2>Upgrades</h2>
+      <p class="muted">Spend leaves to become more efficient.</p>
+
+      <div id="upgradesList" class="list"></div>
+    </section>
+
+    <!-- REWARDS -->
+    <section class="card" id="rewardsArea">
+      <h2>Rewards</h2>
+      <p class="muted">Earn badges as your tree grows.</p>
+
+      <div id="rewardsList" class="rewards"></div>
+    </section>
+
+    <!-- HELP PANEL -->
+    <section class="card" id="helpPanel" hidden>
+      <h2>Help</h2>
+      <div id="helpContent" class="help"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted">Tip: buy an Auto Waterer to generate leaves automatically.</span>
+  </footer>
+</body>
+</html>
