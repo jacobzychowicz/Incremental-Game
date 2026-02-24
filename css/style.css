@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #295262;
+  color: #e5e7eb;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+  background-color: #0f172a;
+  border-bottom: 1px solid #444;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  background-color: #111c33;
+  border: 1px solid #444;
+  border-radius: 10px;
+
+  padding: 12px;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+#clickArea {
+  grid-column: span 4;
+  min-height: 280px;
+  position: relative;
+}
+
+#scoreboard {
+  grid-column: span 8;
+}
+
+#upgradesArea {
+  grid-column: span 7;
+}
+
+#rewardsArea {
+  grid-column: span 5;
+}
+
+#helpPanel {
+  grid-column: span 12;
+}
+
+.btn {
+  background-color: #1f2a44;
+  color: white;
+
+  border: 1px solid #444;
+  border-radius: 8px;
+
+  padding: 8px 12px;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #24314f;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.tree {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+  border: 1px solid #444;
+
+  margin: 15px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 60px;
+
+  background-color: #1b3a2f;
+
+  cursor: pointer;
+}
+
+.tree:active {
+  transform: scale(0.95);
+}
+
+.toast {
+  position: absolute;
+
+  bottom: 10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background-color: black;
+  padding: 8px;
+
+  border-radius: 8px;
+  border: 1px solid #444;
+
+  opacity: 0;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1%;
+}
+
+.stat {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.label {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.progressBar {
+  height: 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+
+  background-color: green;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.upgradeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid #444;
+  border-radius: 8px;
+
+  padding: 8px;
+}
+
+.upgradeTitle {
+  font-weight: bold;
+}
+
+.rewards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.badge {
+  border: 1px dashed #777;
+  border-radius: 8px;
+  padding: 8px;
+
+  opacity: 0.5;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.badge.earned {
+  opacity: 1;
+  border-style: solid;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+}
+
+.progress {
+  grid-column: 1 / -1;
+  grid-row: 7;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  text-align: center;
+}
+
+#nextRewardLabel {
+  font-size: 80px;
+}
+
+#nextRewardTitle {
+  font-size: 20px;
+}
