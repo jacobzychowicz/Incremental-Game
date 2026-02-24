@@ -53,6 +53,14 @@ window.addEventListener("load", function () {
     }, 2000);
   }
 
+  function autoSpeedTextUpdate() {
+    if (autoOwned > 0) {
+      autoSpeedEl.textContent =
+        autoSpeed == 2000 ? clickValue/2+" l/s" :
+        autoSpeed == 1000 ? clickValue+" l/s" : clickValue*2+" l/s";
+    }
+  }
+
   function totalUpgrades() {
     return glovesOwned + ladderOwned + compostOwned + autoOwned;
   }
@@ -73,9 +81,7 @@ window.addEventListener("load", function () {
       autoSpeed = 500;
     }
 
-    autoSpeedEl.textContent =
-      autoSpeed == 2000 ? "Slow" :
-      autoSpeed == 1000 ? "Medium" : "Fast";
+    autoSpeedTextUpdate();
 
     if (autoTimer != null)
       clearInterval(autoTimer);
@@ -110,7 +116,7 @@ window.addEventListener("load", function () {
     upgradesOwnedEl.textContent = totalUpgrades();
 
     updateNextReward();
-
+    autoSpeedTextUpdate();
     renderUpgrades();
   }
 
@@ -233,10 +239,10 @@ window.addEventListener("load", function () {
 
     upgradesListEl.innerHTML = "";
 
-    createUpgrade("Gloves (+1 click)", glovesCost(), glovesOwned, buyGloves);
-    createUpgrade("Ladder (+3 click)", ladderCost(), ladderOwned, buyLadder);
-    createUpgrade("Compost (+10 click)", compostCost(), compostOwned, buyCompost);
-    createUpgrade("Auto Waterer", autoCost(), autoOwned, buyAuto);
+    createUpgrade("🧤 Gloves (+1 click)", glovesCost(), glovesOwned, buyGloves);
+    createUpgrade("🪜 Ladder (+3 click)", ladderCost(), ladderOwned, buyLadder);
+    createUpgrade("🌿 Compost (+10 click)", compostCost(), compostOwned, buyCompost);
+    createUpgrade("💧 Auto Waterer", autoCost(), autoOwned, buyAuto);
   }
 
   function createUpgrade(name, cost, ownedCount, buyFunction) {
@@ -296,5 +302,6 @@ window.addEventListener("load", function () {
 
   renderRewards();
   updateView();
+  console.log(autoSpeed);
 
 });
