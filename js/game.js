@@ -288,8 +288,15 @@ window.addEventListener("load", function () {
       helpPanel.hidden = false;
 
       helpContent.innerHTML =
-        "Click the tree to collect leaves.<br>" +
-        "Buy upgrades to get more leaves.";
+      "<strong>How to Play:</strong><br>" +
+      "Click the tree to collect leaves. Each click gives you leaves based on your current click value.<br><br>" +
+      "<strong>Upgrades:</strong><br>" +
+      "Spend leaves to buy upgrades that increase the number of leaves you earn per click. " +
+      "You can also purchase the Auto Waterer, which automatically collects leaves over time. " +
+      "Buying it again makes it run faster.<br><br>" +
+      "<strong>Rewards:</strong><br>" +
+      "As you collect more leaves, you unlock rewards and your tree grows through new stages. " +
+      "Try to earn all rewards and become the ultimate Forest Keeper!";
 
       helpBtn.textContent = "Close Help";
 
